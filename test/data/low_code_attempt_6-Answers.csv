@@ -1,0 +1,16 @@
+ID;text;isCorrect;question_ID
+cfea44d4-06ae-428e-bfce-72c7a041720d;Yes;true;cfea44d4-06ae-428e-bfce-72c7a041720d
+7210f321-6580-4287-a38c-b8e00a5eff57;No;false;cfea44d4-06ae-428e-bfce-72c7a041720d
+2430e452-8572-41b4-a436-eba26185de91;Maybe;false;7210f321-6580-4287-a38c-b8e00a5eff57
+6a2cd15f-c377-414f-80dc-aeb38b0eb1c0;Definitely;true;7210f321-6580-4287-a38c-b8e00a5eff57
+c6c7d13f-9d51-4ae7-a7bd-9b224f7e1d44;Absolutely not;false;2430e452-8572-41b4-a436-eba26185de91
+41de20d4-06c2-495f-9214-a3acb58c53da;Correct;true;2430e452-8572-41b4-a436-eba26185de91
+43b204ce-fd05-435b-952c-aa9732c71fbb;Incorrect;false;6a2cd15f-c377-414f-80dc-aeb38b0eb1c0
+dd714d0d-235f-4635-abb5-4512b1a91f46;Partially correct;true;6a2cd15f-c377-414f-80dc-aeb38b0eb1c0
+c809a174-6d75-4917-b20c-aa866e028768;Not sure;false;c6c7d13f-9d51-4ae7-a7bd-9b224f7e1d44
+ef990700-3782-495e-bf29-46e86f64b4b9;True;true;c6c7d13f-9d51-4ae7-a7bd-9b224f7e1d44
+a3e5e3bf-6e61-4e18-986f-cc09f2f86c32;False;false;41de20d4-06c2-495f-9214-a3acb58c53da
+e83753d8-0202-4b36-beaa-012533309c16;Yes indeed;true;41de20d4-06c2-495f-9214-a3acb58c53da
+9876bb79-8439-4c99-81ce-745e5f10aba9;No way;false;43b204ce-fd05-435b-952c-aa9732c71fbb
+53ad0a53-ea1f-4c88-a4b5-60e7cf65459d;Sure;true;43b204ce-fd05-435b-952c-aa9732c71fbb
+985dd8d9-1322-4280-b8cb-c115b82fe6d0;Of course;true;dd714d0d-235f-4635-abb5-4512b1a91f46

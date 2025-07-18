@@ -1,0 +1,16 @@
+ID;title;description;price;dueDate;isPublic;maxCapacity;url;manager_ID
+cfea44d4-06ae-428e-bfce-72c7a041720d;Tech Conference 2023;Join us for a day of tech talks and networking;199.99;2023-09-15;true;100;http://techconference2023.com;cfea44d4-06ae-428e-bfce-72c7a041720d
+7210f321-6580-4287-a38c-b8e00a5eff57;Art Exhibition;Explore contemporary art from local artists;50.00;2023-10-01;true;200;http://artexhibition.com;7210f321-6580-4287-a38c-b8e00a5eff57
+2430e452-8572-41b4-a436-eba26185de91;Music Festival;Enjoy live music from various genres;150.00;2023-08-20;true;500;http://musicfestival.com;2430e452-8572-41b4-a436-eba26185de91
+6a2cd15f-c377-414f-80dc-aeb38b0eb1c0;Health & Wellness Retreat;Relax and rejuvenate in nature;299.99;2023-11-05;false;50;http://wellnessretreat.com;6a2cd15f-c377-414f-80dc-aeb38b0eb1c0
+c6c7d13f-9d51-4ae7-a7bd-9b224f7e1d44;Cooking Workshop;Learn to cook gourmet meals;75.00;2023-09-10;true;30;http://cookingworkshop.com;c6c7d13f-9d51-4ae7-a7bd-9b224f7e1d44
+41de20d4-06c2-495f-9214-a3acb58c53da;Startup Pitch Night;Present your startup ideas to investors;0.00;2023-07-25;true;100;http://pitchnight.com;41de20d4-06c2-495f-9214-a3acb58c53da
+43b204ce-fd05-435b-952c-aa9732c71fbb;Book Fair;Discover new books and meet authors;20.00;2023-12-01;true;300;http://bookfair.com;43b204ce-fd05-435b-952c-aa9732c71fbb
+dd714d0d-235f-4635-abb5-4512b1a91f46;Charity Run;Participate in a fun run for a good cause;25.00;2023-09-30;true;150;http://charityrun.com;dd714d0d-235f-4635-abb5-4512b1a91f46
+c809a174-6d75-4917-b20c-aa866e028768;Science Fair;Showcase innovative science projects;0.00;2023-10-15;true;200;http://sciencefair.com;c809a174-6d75-4917-b20c-aa866e028768
+ef990700-3782-495e-bf29-46e86f64b4b9;Film Festival;Watch independent films and meet filmmakers;40.00;2023-11-20;true;250;http://filmfestival.com;ef990700-3782-495e-bf29-46e86f64b4b9
+a3e5e3bf-6e61-4e18-986f-cc09f2f86c32;Tech Workshop;Hands-on sessions for tech enthusiasts;100.00;2023-08-05;true;60;http://techworkshop.com;debc535f-295e-4337-8633-de878f8df1f2
+e83753d8-0202-4b36-beaa-012533309c16;Photography Class;Learn the art of photography;60.00;2023-09-12;true;20;http://photographyclass.com;e83753d8-0202-4b36-beaa-012533309c16
+9876bb79-8439-4c99-81ce-745e5f10aba9;Gardening Workshop;Grow your own vegetables;35.00;2023-10-10;true;15;http://gardeningworkshop.com;9876bb79-8439-4c99-81ce-745e5f10aba9
+53ad0a53-ea1f-4c88-a4b5-60e7cf65459d;Dance Competition;Show off your moves;10.00;2023-11-30;true;100;http://dancecompetition.com;53ad0a53-ea1f-4c88-a4b5-60e7cf65459d
+985dd8d9-1322-4280-b8cb-c115b82fe6d0;Coding Bootcamp;Intensive coding training;499.99;2023-08-15;true;25;http://codingbootcamp.com;985dd8d9-1322-4280-b8cb-c115b82fe6d0

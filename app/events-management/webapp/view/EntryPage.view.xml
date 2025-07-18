@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="eventsmanagement.controller.EntryPageController">
+    <Page>
+        <headerContent>
+            <Bar>
+                <contentMiddle>
+                    <Title text="Your Events" />
+                </contentMiddle>
+                <contentRight>
+                    <Text text="{/getCurrentUserId/id}" textAlign="End" />
+                </contentRight>
+            </Bar>
+        </headerContent>
+        <content>
+            <FlexBox
+                class="sapUiSmallMargin"
+                justifyContent="SpaceAround"
+                alignItems="Stretch">
+                <VBox class="sapUiSmallMargin" width="45%">
+                    <List
+                        id="participantEventsList"
+                        headerText="Events You Are Participating In"
+                        items="{/ParticipantEvents}">
+                        <StandardListItem
+                            title="{title}"
+                            type="Active"
+                            description="{description}"
+                            info="{= ${dueDate} ? 'Due: ' + ${dueDate} : '' }"
+                            infoState="Success"
+                            press="onEventPress(${ID})">
+                        </StandardListItem>
+                    </List>
+                </VBox>
+                <VBox class="sapUiSmallMargin" width="45%">
+                    <List
+                        id="managerEventsList"
+                        headerText="Events You Are Managing"
+                        items="{/ManagingEvents}">
+                        <StandardListItem
+                            title="{title}"
+                            type="Active"
+                            description="{description}"
+                            info="{= ${dueDate} ? 'Due: ' + ${dueDate} : '' }"
+                            infoState="Success"
+                            press="onEventPress(${ID})">
+                        </StandardListItem>
+                    </List>
+                </VBox>
+            </FlexBox>
+        </content>
+    </Page>
+</mvc:View>

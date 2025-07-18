@@ -1,0 +1,29 @@
+{
+  "generationParameters": {
+    "generationDate": "Wed Jul 16 2025 11:59:49 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "CLI",
+    "serviceType": "Local Cap",
+    "metadataFilename": "",
+    "serviceUrl": "http://localhost:4004/service/low_code_attempt_6/",
+    "appName": "events-management",
+    "appTitle": "Events Management",
+    "appDescription": "Manage events efficiently",
+    "appNamespace": "",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.136.0",
+    "enableCodeAssist": false,
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": false,
+    "generatorVersion": "1.18.2",
+    "template": "List Report Page V4",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "Events"
+      }
+    ],
+    "launchText": "In order to launch the generated app, simply start your CAP project and navigate to the following location in your browser:\n\nhttp://localhost:4004/events-management/webapp/index.html"
+  }
+}

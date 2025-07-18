@@ -1,0 +1,1 @@
+using low_code_attempt_6Srv as service from '../../srv/service';

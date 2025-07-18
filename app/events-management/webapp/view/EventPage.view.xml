@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="eventsmanagement.controller.EventController">
+    <Page>
+        <headerContent>
+            <Bar>
+                <contentMiddle>
+                    <Title text="{eventModel>/title}" level="H1" />
+                </contentMiddle>
+                <contentLeft>
+                    <Text text="{eventModel>/userRole}" class="sapUiSmallMargin" />
+                </contentLeft>
+                <contentRight>
+                    <Button text="Details" press="onDetailsPress" icon="sap-icon://detail-view" />
+                </contentRight>
+            </Bar>
+        </headerContent>
+        <content>
+            <VBox class="sapUiSmallMargin" alignItems="Center" justifyContent="Center">
+                <Text text="{eventModel>/description}" class="sapUiMediumMarginBottom" wrapping="true" />
+                <FlexBox justifyContent="SpaceAround" alignItems="Stretch" class="sapUiSmallMargin" width="100%">
+                    <VBox width="48%">
+                        <List headerText="Surveys" items="{eventModel>/surveys}">
+                            <StandardListItem title="{eventModel>title}" description="{eventModel>description}" />
+                        </List>
+                    </VBox>
+                    <VBox width="48%">
+                        <List headerText="Messages" items="{eventModel>/messages}">
+                            <StandardListItem title="{eventModel>text}" description="{eventModel>messageContent}" />
+                        </List>
+                <VBox visible="{= ${eventModel>/userRole} === 'Event Manager' }" class="sapUiSmallMarginTop">
+                    <Input placeholder="Enter your message here..." value="{eventModel>/newMessage}" />
+                    <Button text="Send Message" press="onSendMessage" />
+                </VBox>
+                    </VBox>
+                </FlexBox>
+                <!-- New section for sending messages -->
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

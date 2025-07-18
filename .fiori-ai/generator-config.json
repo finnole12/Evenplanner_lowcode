@@ -1,0 +1,32 @@
+{
+    "version": "0.2",
+    "floorplan": "FE_LROP",
+    "project": {
+        "name": "events-management",
+        "targetFolder": "/home/user/projects/low_code_attempt_6",
+        "title": "Events Management",
+        "description": "Manage events efficiently",
+        "ui5Version": "1.136.0",
+        "localUI5Version": "1.82.2",
+        "sapux": true
+    },
+    "service": {
+        "servicePath": "/service/low_code_attempt_6/",
+        "capService": {
+            "projectPath": "/home/user/projects/low_code_attempt_6",
+            "serviceName": "low_code_attempt_6Srv",
+            "serviceCdsPath": "srv/service.cds"
+        }
+    },
+    "entityConfig": {
+        "mainEntity": {
+            "entityName": "Events"
+        },
+        "generateLROPAnnotations": true
+    },
+    "projectType": "LIST_REPORT_OBJECT_PAGE",
+    "telemetryData": {
+        "generationSourceName": "AI Headless",
+        "generationSourceVersion": "1.18.2"
+    }
+}

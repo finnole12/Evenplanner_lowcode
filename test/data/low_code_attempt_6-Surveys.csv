@@ -1,0 +1,18 @@
+ID;isAnonymous;event_ID;title;description;dueDate;isActive
+cfea44d4-06ae-428e-bfce-72c7a041720d;true;cfea44d4-06ae-428e-bfce-72c7a041720d;Tech Event Feedback;We value your feedback for our tech event;2023-09-20;true
+7210f321-6580-4287-a38c-b8e00a5eff57;false;7210f321-6580-4287-a38c-b8e00a5eff57;Art Exhibition Survey;Help us improve our art exhibition;2023-10-05;true
+2430e452-8572-41b4-a436-eba26185de91;true;2430e452-8572-41b4-a436-eba26185de91;Music Festival Survey;Share your thoughts on the music festival;2023-08-25;true
+6a2cd15f-c377-414f-80dc-aeb38b0eb1c0;false;6a2cd15f-c377-414f-80dc-aeb38b0eb1c0;Wellness Retreat Feedback;Let us know your experience;2023-11-10;true
+c6c7d13f-9d51-4ae7-a7bd-9b224f7e1d44;true;c6c7d13f-9d51-4ae7-a7bd-9b224f7e1d44;Cooking Workshop Survey;Your feedback is important to us;2023-09-15;true
+41de20d4-06c2-495f-9214-a3acb58c53da;false;41de20d4-06c2-495f-9214-a3acb58c53da;Startup Pitch Feedback;Rate the pitching experience;2023-07-30;true
+43b204ce-fd05-435b-952c-aa9732c71fbb;true;43b204ce-fd05-435b-952c-aa9732c71fbb;Book Fair Survey;Help us make the book fair better;2023-12-05;true
+dd714d0d-235f-4635-abb5-4512b1a91f46;false;dd714d0d-235f-4635-abb5-4512b1a91f46;Charity Run Feedback;Share your experience with the charity run;2023-10-01;true
+c809a174-6d75-4917-b20c-aa866e028768;true;c809a174-6d75-4917-b20c-aa866e028768;Science Fair Survey;What did you think of the science fair?;2023-10-20;true
+ef990700-3782-495e-bf29-46e86f64b4b9;false;ef990700-3782-495e-bf29-46e86f64b4b9;Film Festival Feedback;Let us know your thoughts on the films;2023-11-25;true
+a3e5e3bf-6e61-4e18-986f-cc09f2f86c32;true;a3e5e3bf-6e61-4e18-986f-cc09f2f86c32;Tech Workshop Survey;Your input helps us improve;2023-08-10;true
+e83753d8-0202-4b36-beaa-012533309c16;false;e83753d8-0202-4b36-beaa-012533309c16;Photography Class Feedback;What did you think of the class?;2023-09-17;true
+9876bb79-8439-4c99-81ce-745e5f10aba9;true;9876bb79-8439-4c99-81ce-745e5f10aba9;Gardening Workshop Survey;Share your thoughts on the workshop;2023-10-12;true
+53ad0a53-ea1f-4c88-a4b5-60e7cf65459d;false;53ad0a53-ea1f-4c88-a4b5-60e7cf65459d;Dance Competition Feedback;Let us know how we did;2023-12-02;true
+985dd8d9-1322-4280-b8cb-c115b82fe6d0;true;985dd8d9-1322-4280-b8cb-c115b82fe6d0;Coding Bootcamp Survey;Help us enhance the bootcamp experience;2023-08-20;true
+9fbcbfe1-9036-45b4-bd45-1d1598abfe16;false;cfea44d4-06ae-428e-bfce-72c7a041720d;title3961;description6065;2025-07-18;true
+5ddfc197-dee8-4f63-970d-d52734760b11;true;cfea44d4-06ae-428e-bfce-72c7a041720d;title4748;description5477;2025-07-18;false
