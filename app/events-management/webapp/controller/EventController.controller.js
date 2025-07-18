@@ -15,9 +15,12 @@ sap.ui.define([
 
         _onObjectMatched: function (oEvent) {
             const sEventId = window.decodeURIComponent(oEvent.getParameter("arguments").eventPath);
+            this._fetchEventData(sEventId);
+        },
+
+        _fetchEventData: function (sEventId) {
             const sEventUrl = `/service/low_code_attempt_6/Events(ID='${sEventId}', IsActiveEntity='true')?$expand=surveys,messages`;
 
-            // Fetch the event data using the fetch API
             fetch(sEventUrl, {
                 method: 'GET',
                 headers: {
@@ -31,7 +34,6 @@ sap.ui.define([
                 return response.json();
             })
             .then(eventData => {
-                // Fetch the current user ID
                 return fetch('/service/low_code_attempt_6/getCurrentUserId', {
                     method: 'GET',
                     headers: {
@@ -45,20 +47,71 @@ sap.ui.define([
                     return response.json();
                 })
                 .then(userData => {
-                    // Determine the user's role
                     const sUserRole = eventData.manager_ID === userData.id ? "Event Manager" : "Participant";
 
-                    // Add the user's role to the event data
-                    eventData.userRole = sUserRole;
-                    eventData.newMessage = ""; // Initialize new message property
+                    if (sUserRole === "Participant") {
+                        const sParticipantEventUrl = `/service/low_code_attempt_6/ParticipantEvents(someid='${sEventId}')?$expand=surveys,messages`;
+                        return fetch(sParticipantEventUrl, {
+                            method: 'GET',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Failed to fetch participant event data');
+                            }
+                            return response.json();
+                        })
+                        .then(participantEventData => {
+                            participantEventData.userRole = sUserRole;
+                            participantEventData.newMessage = "";
 
-                    // Create a JSON model with the updated event data
-                    const oJsonModel = new JSONModel(eventData);
-                    this.getView().setModel(oJsonModel, "eventModel");
+                            const oJsonModel = new JSONModel(participantEventData);
+                            this.getView().setModel(oJsonModel, "eventModel");
+                        });
+                    } else {
+                        eventData.userRole = sUserRole;
+                        eventData.newMessage = "";
+
+                        const oJsonModel = new JSONModel(eventData);
+                        this.getView().setModel(oJsonModel, "eventModel");
+                    }
                 });
             })
             .catch(error => {
                 console.error("Failed to fetch data:", error);
+            });
+        },
+
+        onMakePayment: function () {
+            const oModel = this.getView().getModel("eventModel");
+            const sEventId = oModel.getProperty("/ID");
+
+            fetch('/service/low_code_attempt_6/makePayment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ eventId: sEventId })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to process payment');
+                }
+                return response.json();
+            })
+            .then(result => {
+                if (result.success) {
+                    MessageToast.show("Payment processed successfully.");
+                    this._fetchEventData(sEventId); // Refresh the event data
+                } else {
+                    MessageToast.show("Payment processing failed.");
+                }
+            })
+            .catch(error => {
+                console.error("Failed to process payment:", error);
+                MessageToast.show("Failed to process payment.");
             });
         },
 
@@ -72,7 +125,6 @@ sap.ui.define([
                 return;
             }
 
-            // Send the message to the backend
             fetch('/service/low_code_attempt_6/addMessage', {
                 method: 'POST',
                 headers: {
@@ -88,10 +140,9 @@ sap.ui.define([
                     throw new Error('Failed to send message');
                 }
                 MessageToast.show("Message sent successfully.");
-                oModel.setProperty("/newMessage", ""); // Clear the input field
+                oModel.setProperty("/newMessage", "");
 
-                // Refetch the event data to update the messages list
-                this._onObjectMatched({ getParameter: () => ({ eventPath: encodeURIComponent(sEventId) }) });
+                this._fetchEventData(sEventId);
             })
             .catch(error => {
                 console.error("Failed to send message:", error);

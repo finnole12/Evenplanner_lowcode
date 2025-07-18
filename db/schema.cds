@@ -52,6 +52,7 @@ entity Answers : cuid {
 entity EventParticipants : cuid {
   event: Association to Events;
   user: Association to Users;
+  hasPayed: Boolean;
 }
 
 entity EventMessages : cuid {

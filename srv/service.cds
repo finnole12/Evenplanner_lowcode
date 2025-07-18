@@ -22,7 +22,12 @@ service low_code_attempt_6Srv {
   entity ManagingEvents as select from my.Events as ev 
     where ev.manager.ID = $user.id;
   
-  entity ParticipantEvents as select from my.Events as ev
+  entity ParticipantEvents as select from my.Events as ev {
+    key ev.ID as someid,
+    ev.{ *},
+    ev.participants.user.ID as userID,
+    ev.participants.hasPayed
+  }
     where ev.participants.user.ID = $user.id;
 
   function getCurrentUserId() returns {
@@ -30,6 +35,10 @@ service low_code_attempt_6Srv {
   }
 
   action addMessage(eventId: String, messageText: String) returns {
+    success: Boolean
+  }
+
+  action makePayment(eventId: String) returns {
     success: Boolean
   }
 }

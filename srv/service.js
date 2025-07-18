@@ -60,6 +60,27 @@ class low_code_attempt_6Srv extends LCAPApplicationService {
             return { success: true };
         });
 
+        this.on('makePayment', async (request) => {
+            const { eventId } = request.data;
+            const userId = request.user.id;
+
+            if (!eventId || !userId) {
+                return { success: false };
+            }
+
+            const { EventParticipants } = cds.entities;
+            const participant = await SELECT.one.from(EventParticipants).where({ event_ID: eventId, user_ID: userId });
+
+            if (!participant) {
+                return { success: false };
+            }
+
+            participant.hasPayed = true;
+            await cds.update(EventParticipants).set({ hasPayed: true }).where({ ID: participant.ID });
+
+            return { success: true };
+        });
+
         return super.init();
     }
 }

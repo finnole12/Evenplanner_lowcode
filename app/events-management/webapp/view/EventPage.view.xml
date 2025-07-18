@@ -12,12 +12,14 @@
                 <contentLeft>
                     <Text text="{eventModel>/userRole}" class="sapUiSmallMargin" />
                 </contentLeft>
-                <contentRight>
-                    <Button text="Details" press="onDetailsPress" icon="sap-icon://detail-view" />
-                </contentRight>
             </Bar>
         </headerContent>
         <content>
+            <!-- New section for buttons in the upper right corner -->
+            <HBox justifyContent="End" class="sapUiSmallMargin">
+                <Button text="Details" press="onDetailsPress" icon="sap-icon://detail-view" />
+                <Button text="Make Payment" press="onMakePayment" icon="sap-icon://money-bills" visible="{= ${eventModel>/userRole} === 'Participant' &amp;&amp; !${eventModel>/hasPayed} }" />
+            </HBox>
             <VBox class="sapUiSmallMargin" alignItems="Center" justifyContent="Center">
                 <Text text="{eventModel>/description}" class="sapUiMediumMarginBottom" wrapping="true" />
                 <FlexBox justifyContent="SpaceAround" alignItems="Stretch" class="sapUiSmallMargin" width="100%">
@@ -30,13 +32,12 @@
                         <List headerText="Messages" items="{eventModel>/messages}">
                             <StandardListItem title="{eventModel>text}" description="{eventModel>messageContent}" />
                         </List>
-                <VBox visible="{= ${eventModel>/userRole} === 'Event Manager' }" class="sapUiSmallMarginTop">
-                    <Input placeholder="Enter your message here..." value="{eventModel>/newMessage}" />
-                    <Button text="Send Message" press="onSendMessage" />
-                </VBox>
+                        <VBox visible="{= ${eventModel>/userRole} === 'Event Manager' }" class="sapUiSmallMarginTop">
+                            <Input placeholder="Enter your message here..." value="{eventModel>/newMessage}" />
+                            <Button text="Send Message" press="onSendMessage" />
+                        </VBox>
                     </VBox>
                 </FlexBox>
-                <!-- New section for sending messages -->
             </VBox>
         </content>
     </Page>
