@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="eventsmanagement.controller.SurveyController">
+    <Page showNavButton="false" navButtonPress="onNavBack">
+        <headerContent>
+            <Bar>
+                <contentMiddle>
+                    <Title text="{surveyModel>/title}" level="H1" class="sapUiMediumMargin" />
+                </contentMiddle>
+                <contentLeft>
+                    <Text text="{surveyModel>/description}" class="sapUiSmallMargin" />
+                </contentLeft>
+                <contentRight>
+                    <HBox class="sapUiSmallMargin">
+                        <Text text="Due: {surveyModel>/dueDate}" class="sapUiSmallMarginEnd" />
+                        <Text text="{= ${surveyModel>/isActive} ? 'Active' : 'Inactive' }" class="sapUiSmallMarginEnd" />
+                    </HBox>
+                </contentRight>
+            </Bar>
+        </headerContent>
+        <content>
+            <VBox class="sapUiMediumMargin" alignItems="Center" justifyContent="Center">
+                <List items="{surveyModel>/questions}" class="sapUiMediumMargin">
+                    <CustomListItem>
+                        <VBox class="sapUiSmallMargin">
+                            <Text text="{surveyModel>text}" class="sapUiMediumMarginBottom" wrapping="true" />
+                            <RadioButtonGroup columns="1" selectedIndex="{surveyModel>selectedAnswer}" class="sapUiSmallMargin" buttons="{surveyModel>answers}">
+                                <RadioButton text="{surveyModel>text}" />
+                            </RadioButtonGroup>
+                        </VBox>
+                    </CustomListItem>
+                </List>
+                <Button text="Submit" press="onSubmitSurvey" class="sapUiMediumMarginTop sapUiLargeMarginBottom" />
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

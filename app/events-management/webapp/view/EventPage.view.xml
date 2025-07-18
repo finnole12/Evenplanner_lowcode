@@ -17,7 +17,7 @@
         <content>
             <!-- New section for buttons in the upper right corner -->
             <HBox justifyContent="End" class="sapUiSmallMargin">
-                <Button text="Details" press="onDetailsPress" icon="sap-icon://detail-view" />
+                <Button text="Details" icon="sap-icon://detail-view" />
                 <Button text="Make Payment" press="onMakePayment" icon="sap-icon://money-bills" visible="{= ${eventModel>/userRole} === 'Participant' &amp;&amp; !${eventModel>/hasPayed} }" />
             </HBox>
             <VBox class="sapUiSmallMargin" alignItems="Center" justifyContent="Center">
@@ -25,7 +25,7 @@
                 <FlexBox justifyContent="SpaceAround" alignItems="Stretch" class="sapUiSmallMargin" width="100%">
                     <VBox width="48%">
                         <List headerText="Surveys" items="{eventModel>/surveys}">
-                            <StandardListItem title="{eventModel>title}" description="{eventModel>description}" />
+                            <StandardListItem type="Active" title="{eventModel>title}" description="{eventModel>description}" press="onSurveyPress(${eventModel>ID})"/>
                         </List>
                     </VBox>
                     <VBox width="48%">

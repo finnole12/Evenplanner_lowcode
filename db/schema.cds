@@ -27,7 +27,7 @@ entity Users : cuid {
 entity Surveys : cuid {
   isAnonymous: Boolean;
   questions: Association to many Questions
-    on questions.survey = $self;
+    on questions.surveys = $self;
   event: Association to Events;
   title: String(100);
   description: String(500);
@@ -40,7 +40,7 @@ entity Questions : cuid {
   isMultipleChoice: Boolean;
   answers: Association to many Answers
     on answers.question = $self;
-  survey: Association to Surveys;
+  surveys: Association to Surveys;
 }
 
 entity Answers : cuid {
@@ -58,4 +58,9 @@ entity EventParticipants : cuid {
 entity EventMessages : cuid {
   text: String(500);
   event: Association to Events;
+}
+
+entity UserAnswers {
+  key user: Association to Users;
+  key answer: Association to Answers;
 }

@@ -81,6 +81,38 @@ class low_code_attempt_6Srv extends LCAPApplicationService {
             return { success: true };
         });
 
+        this.on('submitAnswers', async (request) => {
+            const { surveyId, answers } = request.data;
+            const userId = request.user.id;
+
+            if (!surveyId || !answers || !userId) {
+                return { success: false };
+            }
+
+            const { Surveys, Answers, UserAnswers } = cds.entities;
+            const survey = await SELECT.one.from(Surveys).where({ ID: surveyId });
+
+            if (!survey || !survey.isActive) {
+                return { success: false };
+            }
+
+            for (const answerId of answers) {
+                const answer = await SELECT.one.from(Answers).where({ ID: answerId });
+
+                if (!answer) {
+                    return { success: false };
+                }
+
+                // Delete existing UserAnswers entries for the same user and answer
+                await DELETE.from(UserAnswers).where({ user_ID: userId, answer_ID: answerId });
+
+                // Insert new UserAnswers entry
+                await INSERT.into(UserAnswers).columns('user_ID', 'answer_ID').values(userId, answerId);
+            }
+
+            return { success: true };
+        });
+
         return super.init();
     }
 }

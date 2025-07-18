@@ -92,6 +92,11 @@
           "pattern": "Event/{eventPath}",
           "name": "Event",
           "target": "Event"
+        },
+        {
+          "pattern": "Survey/{surveyPath}",
+          "name": "Survey",
+          "target": "Survey"
         }
       ],
       "targets": {
@@ -104,6 +109,11 @@
           "viewName": "eventsmanagement.view.EntryPage",
           "type": "XML",
           "id": "EntryPage"
+        },
+        "Survey": {
+          "viewName": "eventsmanagement.view.SurveyPage",
+          "type": "XML",
+          "id": "Survey"
         }
       }
     }

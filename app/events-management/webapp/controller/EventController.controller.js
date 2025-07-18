@@ -150,8 +150,9 @@ sap.ui.define([
             });
         },
 
-        onDetailsPress: function () {
-            // Implement the logic for the Details button press
+        onSurveyPress: function (surveyID) {
+            const oRouter = UIComponent.getRouterFor(this);
+            oRouter.navTo("Survey", { surveyPath: surveyID });
         },
 
         onNavBack: function () {

@@ -18,6 +18,8 @@ service low_code_attempt_6Srv {
   entity EventParticipants as projection on my.EventParticipants;
   @odata.draft.enabled
   entity EventMessages as projection on my.EventMessages;
+  @odata.draft.enabled
+  entity UserAnswers as projection on my.UserAnswers;
 
   entity ManagingEvents as select from my.Events as ev 
     where ev.manager.ID = $user.id;
@@ -39,6 +41,10 @@ service low_code_attempt_6Srv {
   }
 
   action makePayment(eventId: String) returns {
+    success: Boolean
+  }
+
+  action submitAnswers(surveyId: String, answers: Array of String) returns {
     success: Boolean
   }
 }
