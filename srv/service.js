@@ -96,15 +96,18 @@ class low_code_attempt_6Srv extends LCAPApplicationService {
                 return { success: false };
             }
 
+            // Delete existing UserAnswers entries for this user and survey
+            const existingAnswers = await SELECT.from(UserAnswers).where({ user_ID: userId });
+            const answerIdsToDelete = existingAnswers.map(answer => answer.answer_ID);
+
+            await DELETE.from(UserAnswers).where({ user_ID: userId, answer_ID: { in: answerIdsToDelete } });
+
             for (const answerId of answers) {
                 const answer = await SELECT.one.from(Answers).where({ ID: answerId });
 
                 if (!answer) {
                     return { success: false };
                 }
-
-                // Delete existing UserAnswers entries for the same user and answer
-                await DELETE.from(UserAnswers).where({ user_ID: userId, answer_ID: answerId });
 
                 // Insert new UserAnswers entry
                 await INSERT.into(UserAnswers).columns('user_ID', 'answer_ID').values(userId, answerId);

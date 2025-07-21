@@ -26,13 +26,73 @@
                     <CustomListItem>
                         <VBox class="sapUiSmallMargin">
                             <Text text="{surveyModel>text}" class="sapUiMediumMarginBottom" wrapping="true" />
-                            <RadioButtonGroup columns="1" selectedIndex="{surveyModel>selectedAnswer}" class="sapUiSmallMargin" buttons="{surveyModel>answers}">
-                                <RadioButton text="{surveyModel>text}" />
-                            </RadioButtonGroup>
+                            <VBox>
+                                <RadioButtonGroup columns="1" selectedIndex="{surveyModel>selectedAnswer}" class="sapUiSmallMargin" buttons="{surveyModel>answers}" visible="{= !${surveyModel>isMultipleChoice} }" select="onSelectionChange">
+                                    <RadioButton text="{surveyModel>text}" />
+                                </RadioButtonGroup>
+                                <List visible="{surveyModel>isMultipleChoice}" items="{surveyModel>answers}">
+                                    <CustomListItem>
+                                        <CheckBox text="{surveyModel>text}" selected="{surveyModel>selectedAnswers}" select="onSelectionChange" />
+                                    </CustomListItem>
+                                </List>
+                            </VBox>
                         </VBox>
                     </CustomListItem>
                 </List>
-                <Button text="Submit" press="onSubmitSurvey" class="sapUiMediumMarginTop sapUiLargeMarginBottom" />
+                <Button text="Submit" press="onSubmitSurvey" enabled="{surveyModel>/allQuestionsAnswered}" class="sapUiMediumMarginTop sapUiLargeMarginBottom" />
+
+                <!-- Survey Results Section -->
+                <VBox class="sapUiMediumMargin" alignItems="Center" justifyContent="Center">
+                    <Title text="Survey Results" level="H2" class="sapUiMediumMarginTop" />
+
+                    <!-- Table for Answer Percentages -->
+                    <Table id="answerStatisticsTable" items="{resultsModel>/answerStatistics}">
+                        <columns>
+                            <Column>
+                                <Text text="Question" />
+                            </Column>
+                            <Column>
+                                <Text text="Answer" />
+                            </Column>
+                            <Column>
+                                <Text text="Percentage" />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem type="Active">
+                                <cells>
+                                    <Text text="{resultsModel>questionText}" />
+                                    <Text text="{resultsModel>answerText}" />
+                                    <Text text="{resultsModel>percentage}" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+
+                    <!-- Table for User's Picked Answers -->
+                    <Table items="{resultsModel>/userAnswers}">
+                        <columns>
+                            <Column>
+                                <Text text="User" />
+                            </Column>
+                            <Column>
+                                <Text text="Question" />
+                            </Column>
+                            <Column>
+                                <Text text="Picked Answer" />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{resultsModel>userName}" />
+                                    <Text text="{resultsModel>questionText}" />
+                                    <Text text="{resultsModel>pickedAnswerText}" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </VBox>
             </VBox>
         </content>
     </Page>
