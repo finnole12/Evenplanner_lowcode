@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="eventsmanagement.controller.NewEventController" xmlns:layout="sap.ui.layout">
+    <Page showNavButton="false">
+        <headerContent>
+            <Bar>
+                <contentMiddle>
+                    <Title text="New Event" />
+                </contentMiddle>
+            </Bar>
+        </headerContent>
+        <content>
+            <VBox class="sapUiSmallMargin" alignItems="Center" justifyContent="Center">
+                <layout:Grid defaultSpan="L6 M6 S12" width="80%" class="centeredGrid">
+                    <layout:content>
+                        <Label text="Event Title" labelFor="eventTitleInput" />
+                        <Input id="eventTitleInput" value="{newEventModel>/newEvent/title}" width="100%" />
+
+                        <Label text="Event Description" labelFor="eventDescriptionInput" />
+                        <TextArea id="eventDescriptionInput" value="{newEventModel>/newEvent/description}" width="100%" rows="4" />
+
+                        <Label text="Price (€)" labelFor="eventPriceInput" />
+                        <Input id="eventPriceInput" value="{newEventModel>/newEvent/price}" width="100%" type="Number" />
+
+                        <Label text="Public Event" labelFor="eventPublicSwitch" />
+                        <Switch id="eventPublicSwitch" state="{newEventModel>/newEvent/isPublic}" />
+
+                        <Label text="Max Participants" labelFor="maxParticipantsInput" visible="{newEventModel>/newEvent/isPublic}" />
+                        <Input id="maxParticipantsInput" value="{newEventModel>/newEvent/maxParticipants}" width="100%" type="Number" visible="{newEventModel>/newEvent/isPublic}" />
+
+                        <Label text="Whitelisted Emails" labelFor="whitelistedEmailsInput" visible="{= !${newEventModel>/newEvent/isPublic}}" />
+                        <TextArea id="whitelistedEmailsInput" value="{newEventModel>/newEvent/whitelistedEmails}" width="100%" rows="4" visible="{= !${newEventModel>/newEvent/isPublic}}" />
+                    </layout:content>
+                </layout:Grid>
+                <Button text="Create Event" press="onCreateEvent" class="sapUiSmallMarginTop" enabled="{= !!${newEventModel>/newEvent/title} &amp;&amp; !!${newEventModel>/newEvent/description} }" />
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

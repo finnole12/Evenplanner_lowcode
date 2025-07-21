@@ -1,4 +1,4 @@
-using { low_code_attempt_6 as my } from '../db/schema.cds';
+using { low_code_attempt_6 as my } from '../db/schema';
 
 @path: '/service/low_code_attempt_6'
 @requires: 'authenticated-user'
@@ -45,6 +45,36 @@ service low_code_attempt_6Srv {
   }
 
   action submitAnswers(surveyId: String, answers: Array of String) returns {
+    success: Boolean
+  }
+
+  action createEvent(
+    title: String,
+    description: String,
+    price: Decimal,
+    currency: String,
+    dueDate: Date,
+    isPublic: Boolean,
+    maxCapacity: Integer
+  ) returns {
+    success: Boolean
+  }
+
+  action createSurvey(
+    title: String,
+    description: String,
+    dueDate: Date,
+    isActive: Boolean,
+    eventId: String,
+    anonymous: Boolean,
+    questions: Array of {
+      text: String;
+      isMultipleChoice: Boolean;
+      answers: Array of {
+        text: String;
+      }
+    }
+  ) returns {
     success: Boolean
   }
 }

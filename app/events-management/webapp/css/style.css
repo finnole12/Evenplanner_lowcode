@@ -1,3 +1,17 @@
 .highlightedAnswer {
     background-color: #f0f8ff; /* Light blue background */
 }
+
+.centeredTable {
+    margin: 0 auto; /* Center the table horizontally */
+}
+
+.centeredGrid {
+    margin: 0 auto; /* Center the grid horizontally */
+}
+
+.sapUiSmallMarginTop {
+    margin-top: 1rem; /* Add top margin for spacing */
+}
+
+.solid {border-style: solid;}

@@ -45,7 +45,6 @@ entity Questions : cuid {
 
 entity Answers : cuid {
   text: String(200);
-  isCorrect: Boolean;
   question: Association to Questions;
 }
 

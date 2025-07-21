@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="eventsmanagement.controller.NewSurveyController"
+    xmlns:layout="sap.ui.layout">
+    <Page showNavButton="true" navButtonPress="onNavBack">
+        <headerContent>
+            <Bar>
+                <contentMiddle>
+                    <Title text="New Survey" />
+                </contentMiddle>
+            </Bar>
+        </headerContent>
+        <content>
+            <VBox class="sapUiSmallMargin" alignItems="Center" justifyContent="Center">
+                <layout:Grid defaultSpan="L6 M6 S12" width="80%" class="centeredGrid">
+                    <layout:content>
+                        <Label text="Survey Title" labelFor="surveyTitleInput" />
+                        <Input id="surveyTitleInput" value="{newSurveyModel>/title}" width="100%" change=".onInputChange" />
+
+                        <Label text="Description" labelFor="surveyDescriptionInput" />
+                        <TextArea id="surveyDescriptionInput" value="{newSurveyModel>/description}" width="100%" rows="4" change=".onInputChange" />
+
+                        <Label text="Anonymous" labelFor="surveyAnonymousSwitch" />
+                        <Switch id="surveyAnonymousSwitch" state="{newSurveyModel>/anonymous}" />
+
+                        <Label text="Due Date" labelFor="surveyDueDatePicker" />
+                        <DatePicker id="surveyDueDatePicker" value="{newSurveyModel>/dueDate}" width="100%" />
+
+                        <Label text="Questions" />
+                        <List items="{newSurveyModel>/questions}" width="100%">
+                            <CustomListItem>
+                                <VBox class="" width="100%">
+                                    <HBox justifyContent="SpaceBetween" alignItems="Center" width="100%">
+                                        <Label class="sapUiSmallMargin" text="Question Text" labelFor="questionTextInput" />
+                                        <Input class="sapUiSmallMargin" id="questionTextInput" value="{newSurveyModel>text}" placeholder="Question Text" width="20em" change=".onInputChange" />
+                                    </HBox>
+                                    <HBox class="" justifyContent="SpaceBetween" alignItems="Center" width="100%">
+                                        <Label class="sapUiSmallMargin" text="Multiple Choice" labelFor="multipleChoiceSwitch" />
+                                        <Switch class="sapUiSmallMargin" id="multipleChoiceSwitch" state="{newSurveyModel>isMultipleChoice}" />
+                                    </HBox>
+                                    <List class="sapUiSmallMargin" items="{newSurveyModel>answers}" width="100%">
+                                        <CustomListItem>
+                                            <HBox class="sapUiSmallMargin" justifyContent="SpaceBetween" width="100%">
+                                                <Label text="Answer Text" labelFor="answerTextInput" />
+                                                <Input id="answerTextInput" value="{newSurveyModel>text}" placeholder="Answer Text" width="70%" change=".onInputChange" />
+                                            </HBox>
+                                        </CustomListItem>
+                                    </List>
+                                    <Button text="Add Answer" press="onAddAnswer" class="sapUiSmallMargin" />
+                                </VBox>
+                            </CustomListItem>
+                        </List>
+                        <Button text="Add Question" press="onAddQuestion" class="sapUiMediumMarginTop" />
+                    </layout:content>
+                </layout:Grid>
+                <Button id="createSurveyButton" text="Create Survey" press="onCreateSurvey" class="sapUiMediumMarginTop sapUiLargeMarginBottom" enabled="false" />
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

@@ -30,7 +30,7 @@
                             description="{description}"
                             info="{= ${dueDate} ? 'Due: ' + ${dueDate} : '' }"
                             infoState="Success"
-                            press="onEventPress(${ID})">
+                            press="onEventPress(${someid})">
                         </StandardListItem>
                     </List>
                 </VBox>
@@ -50,6 +50,9 @@
                     </List>
                 </VBox>
             </FlexBox>
+            <HBox justifyContent="End" class="sapUiSmallMargin">
+                <Button text="Create New Event" icon="sap-icon://add" press="onNavToNewEvent" />
+            </HBox>
         </content>
     </Page>
 </mvc:View>

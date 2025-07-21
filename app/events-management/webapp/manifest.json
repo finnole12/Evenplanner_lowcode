@@ -101,6 +101,21 @@
           "pattern": "Survey/{surveyPath}",
           "name": "Survey",
           "target": "Survey"
+        },
+        {
+          "pattern": "EventDetails/{eventPath}",
+          "name": "EventDetails",
+          "target": "EventDetails"
+        },
+        {
+          "pattern": "NewEvent",
+          "name": "NewEvent",
+          "target": "NewEvent"
+        },
+        {
+          "pattern": "NewSurvey/{eventId}",
+          "name": "NewSurvey",
+          "target": "NewSurvey"
         }
       ],
       "targets": {
@@ -118,6 +133,21 @@
           "viewName": "eventsmanagement.view.SurveyPage",
           "type": "XML",
           "id": "Survey"
+        },
+        "EventDetails": {
+          "viewName": "eventsmanagement.view.EventDetails",
+          "type": "XML",
+          "id": "EventDetails"
+        },
+        "NewEvent": {
+          "viewName": "eventsmanagement.view.NewEventPage",
+          "type": "XML",
+          "id": "NewEvent"
+        },
+        "NewSurvey": {
+          "viewName": "eventsmanagement.view.NewSurveyPage",
+          "type": "XML",
+          "id": "NewSurvey"
         }
       }
     }

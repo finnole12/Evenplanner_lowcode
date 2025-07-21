@@ -155,6 +155,13 @@ sap.ui.define([
             oRouter.navTo("Survey", { surveyPath: surveyID });
         },
 
+        onNavToEventDetails: function () {
+            const oModel = this.getView().getModel("eventModel");
+            const sEventId = oModel.getProperty("/ID");
+            const oRouter = UIComponent.getRouterFor(this);
+            oRouter.navTo("EventDetails", { eventPath: sEventId });
+        },
+
         onNavBack: function () {
             const sPreviousHash = History.getInstance().getPreviousHash();
             if (sPreviousHash !== undefined) {
@@ -163,6 +170,13 @@ sap.ui.define([
                 const oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("EventsList", {}, true);
             }
+        },
+
+        onCreateNewSurvey: function () {
+            const oRouter = UIComponent.getRouterFor(this);
+            const oModel = this.getView().getModel("eventModel");
+            const sEventId = oModel.getProperty("/ID");
+            oRouter.navTo("NewSurvey", {eventId: sEventId});
         }
     });
 });

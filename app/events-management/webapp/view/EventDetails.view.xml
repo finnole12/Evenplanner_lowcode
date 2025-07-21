@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="eventsmanagement.controller.EventDetailsController">
+    <Page showNavButton="false">
+        <headerContent>
+            <Bar>
+                <contentLeft>
+                    <Button text="Leave Event" type="Reject" press="onLeaveEvent" class="sapUiSmallMargin leaveButton" visible="{= ${eventModel>/role} === 'Participant'}" />
+                </contentLeft>
+                <contentMiddle>
+                    <Title text="Event Details" level="H1" class="sapUiMediumMargin" />
+                </contentMiddle>
+            </Bar>
+        </headerContent>
+        <content>
+            <VBox class="sapUiMediumMargin" alignItems="Center" justifyContent="Center" width="100%">
+                <ObjectHeader title="{eventModel>/name}" number="{eventModel>/date}" numberUnit="Date" class="sapUiMediumMargin" />
+                <Table headerText="Participants" items="{eventModel>/participants}" width="50%" class="centeredTable">
+                    <columns>
+                        <Column>
+                            <Text text="Name" />
+                        </Column>
+                        <Column>
+                            <Text text="Email" />
+                        </Column>
+                        <Column hAlign="Center">
+                            <Text text="Payment Status" />
+                        </Column>
+                        <Column>
+                            <Text text="Actions" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{eventModel>user/name}" class="sapUiSmallMarginBottom" />
+                                <Text text="{eventModel>user/email}" class="sapUiSmallMarginBottom" />
+                                <ObjectStatus text="{= ${eventModel>hasPayed} ? 'Paid' : 'Pending'}" state="{= ${eventModel>hasPayed} ? 'Success' : 'Warning'}" class="sapUiSmallMarginBottom" />
+                                <Button text="Kick" type="Negative" press="onKickParticipant" class="sapUiSmallMargin kickButton" visible="{= ${eventModel>/role} === 'Manager'}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

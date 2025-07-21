@@ -114,6 +114,76 @@ class low_code_attempt_6Srv extends LCAPApplicationService {
             }
 
             return { success: true };
+        });        
+        
+        this.on('createEvent', async (request) => {
+            const { title, description, price, currency, dueDate, isPublic, maxCapacity } = request.data;
+
+            console.log(request.data)
+
+            if (!title || !description || price < 0 || !currency || !dueDate ) {
+                return { success: false };
+            }
+
+            const { Events } = cds.entities;
+            const newEventId = crypto.randomUUID();
+
+            await INSERT.into(Events).columns(
+                'ID', 'title', 'description', 'price', 'Currency_code', 'dueDate', 'isPublic', 'maxCapacity', 'manager_ID'
+            ).values(
+                newEventId, title, description, price, currency, dueDate, isPublic, maxCapacity, request.user.id
+            );
+
+            return { success: true };
+        });        
+        
+        this.on('createSurvey', async (request) => {
+            const { title, description, dueDate, isActive, eventId, anonymous, questions } = request.data;
+
+            console.log(request.data)
+
+            if (!title || !description || !dueDate || !eventId || !questions) {
+                return { success: false };
+            }
+
+            const { Surveys, Questions, Answers } = cds.entities;
+            const newSurveyId = crypto.randomUUID();
+
+            await INSERT.into(Surveys).columns(
+                'ID', 'title', 'description', 'dueDate', 'isActive', 'event_ID', 'isAnonymous'
+            ).values(
+                newSurveyId, title, description, dueDate, isActive, eventId, anonymous
+            );
+
+            for (const questionData of questions) {
+                const { text, isMultipleChoice, answers } = questionData;
+                if (!text || !answers) {
+                    return { success: false };
+                }
+
+                const newQuestionId = crypto.randomUUID();
+                await INSERT.into(Questions).columns(
+                    'ID', 'text', 'isMultipleChoice', 'surveys_ID'
+                ).values(
+                    newQuestionId, text, isMultipleChoice, newSurveyId
+                );
+
+                for (const answerData of answers) {
+                    const { text: answerText } = answerData;
+                    if (!answerText) {
+                        return { success: false };
+                    }
+
+                    const newAnswerId = crypto.randomUUID();
+                    await INSERT.into(Answers).columns(
+                        'ID', 'text', 'question_ID'
+                    ).values(
+                        newAnswerId, answerText, newQuestionId
+                    );
+                }
+            }
+
+            return { success: true };
         });
 
         return super.init();
