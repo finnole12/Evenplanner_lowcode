@@ -37,3 +37,6 @@ mta_archives/
 build/ui-deployer/
 build/dist/
 env/
+
+app/approuter/node_modules
+app/approuter/events-management

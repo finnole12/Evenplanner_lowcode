@@ -1,0 +1,22 @@
+{
+    "welcomeFile": "/index.html",
+    "authenticationMethod": "route",
+    "routes": [
+        {
+            "source": "^/service/low_code_attempt_6/(.*)$",
+            "authenticationType": "none",
+            "destination": "srv-api"
+        },
+        {
+            "source": "/user-api/currentUser$",
+            "target": "/currentUser",
+            "service": "sap-approuter-userapi"
+        },
+        {
+            "source": "^(.*)$",
+            "target": "$1",
+            "localDir": "events-management",
+            "authenticationType": "xsuaa"
+        }
+    ]
+}

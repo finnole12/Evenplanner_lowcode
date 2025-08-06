@@ -35,6 +35,37 @@ modules:
     requires:
       - name: low_code_attempt_6-db
 
+  - name: low_code_attempt_6-ui
+    type: html5
+    path: app/events-management
+    build-parameters:
+      builder: custom
+      commands:
+        - npm run build
+      supported-platforms:
+        []
+  
+  - name: low_code_attempt_6
+    type: approuter.nodejs
+    path: app/approuter
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
+      - name: low_code_attempt_6-auth
+    provides:
+      - name: app-api
+        properties:
+          app-protocol: ${protocol}
+          app-uri: ${default-uri}
+
 resources:
   - name: low_code_attempt_6-auth
     type: org.cloudfoundry.managed-service
@@ -45,6 +76,11 @@ resources:
       config:
         xsappname: low_code_attempt_6-${org}-${space}
         tenant-mode: dedicated
+        oauth2-configuration:
+          redirect-uris:
+            - https://~{app-api/app-uri}/**
+    requires:
+      - name: app-api
   - name: low_code_attempt_6-db
     type: com.sap.xs.hdi-container
     parameters:
