@@ -23,6 +23,7 @@
   "devDependencies": {
     "@cap-js/cds-types": "^0.13.0",
     "@cap-js/sqlite": "^2",
+    "@sap/cds-dk": ">=8",
     "@sap/dev-cap-tools": "^1.31.0"
   },
   "scripts": {
@@ -40,15 +41,19 @@
       },
       "auth": {
         "[development]": {
-          "strategy":"dummy",
+          "strategy": "dummy",
           "users": {
             "Jane debc535f-295e-4337-8633-de878f8df1f2": {
               "password": "Jane",
-              "roles": [ "Manager_Role"]
+              "roles": [
+                "Manager_Role"
+              ]
             },
             "John Doe@gmail.com": {
               "password": "John",
-              "roles": [ "Employee_Role"]
+              "roles": [
+                "Employee_Role"
+              ]
             }
           }
         },
