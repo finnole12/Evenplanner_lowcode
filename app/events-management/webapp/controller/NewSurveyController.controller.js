@@ -3,8 +3,9 @@ sap.ui.define([
     "sap/ui/core/routing/History",
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
-    "sap/m/MessageToast"
-], function (UIComponent, History, Controller, JSONModel, MessageToast) {
+    "sap/m/MessageToast",
+    "sap/m/Text",
+], function (UIComponent, History, Controller, JSONModel, MessageToast, Text) {
     "use strict";
 
     return Controller.extend("eventsmanagement.controller.NewSurveyController", {
@@ -57,7 +58,7 @@ sap.ui.define([
             const oSurveyData = oModel.getData();
 
             // Format the dueDate to 'YYYY-MM-DD'
-            const formattedDueDate = oSurveyData.dueDate.toISOString().split('T')[0];
+            const formattedDueDate = new Date(oSurveyData.dueDate).toISOString().split('T')[0];
             oSurveyData.dueDate = formattedDueDate;
 
             fetch('/service/low_code_attempt_6/createSurvey', {
@@ -86,7 +87,9 @@ sap.ui.define([
                 window.history.go(-1);
             } else {
                 const oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("Event", {}, true);
+                const oModel = this.getView().getModel("newSurveyModel");
+                const sEventId = oModel.getProperty("/eventId");
+                oRouter.navTo("Event", { eventPath: sEventId }, true);
             }
         },
 
